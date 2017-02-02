@@ -66,7 +66,7 @@ function rcp_email_subscription_status( $user_id, $status = 'active' ) {
 			}
 
 			if( ! isset( $rcp_options['disable_new_user_notices'] ) ) {
-				$admin_message = __('Hello', 'rcp') . "\n\n" . $user_info->display_name .  ' (' . $user_info->user_login . ') ' . __('has cancelled their subscription to', 'rcp') . ' ' . $site_name . ".\n\n" . __('Their subscription level was', 'rcp') . ': ' . rcp_get_subscription($user_id) . "\n\n";
+				$admin_message = __('Hello', 'rcp') . "\n\n" . $user_info->display_name .  ' (' . $user_info->user_login . ' - ' . $user_info->user_email . ') ' . __('has cancelled their subscription to', 'rcp') . ' ' . $site_name . ".\n\n" . __('Their subscription level was', 'rcp') . ': ' . rcp_get_subscription($user_id) . "\n\n";
 				$admin_message = apply_filters('rcp_before_admin_email_cancelled_thanks', $admin_message, $user_id);
 				$admin_message .= __('Thank you', 'rcp');
 				wp_mail( $admin_emails, __('Cancelled subscription on ', 'rcp') . $site_name, $admin_message, $headers, $attachments );
